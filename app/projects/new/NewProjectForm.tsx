@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { TextField, Button, Typography } from '@mui/material';
+import { TextField, Button, Typography, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/client/client';
 
@@ -11,6 +11,8 @@ interface NewProjectFormProps {
 
 export default function NewProjectForm({ userId }: NewProjectFormProps) {
   const [projectName, setProjectName] = useState('');
+  const [projectDescription, setProjectDescription] = useState('');
+  const [projectStage, setProjectStage] = useState('');
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const supabase = createClient();
@@ -19,8 +21,8 @@ export default function NewProjectForm({ userId }: NewProjectFormProps) {
     e.preventDefault();
     setError(null);
 
-    if (!projectName.trim()) {
-      setError('Project name is required');
+    if (!projectName.trim() || !projectDescription.trim() || !projectStage) {
+      setError('All fields are required');
       return;
     }
 
@@ -30,6 +32,8 @@ export default function NewProjectForm({ userId }: NewProjectFormProps) {
         .insert([
           { 
             project_name: projectName.trim(), 
+            project_description: projectDescription.trim(),
+            project_stage: projectStage,
             user_id: userId
           }
         ])
@@ -55,6 +59,28 @@ export default function NewProjectForm({ userId }: NewProjectFormProps) {
         margin="normal"
         required
       />
+      <TextField
+        fullWidth
+        label="Project Description"
+        value={projectDescription}
+        onChange={(e) => setProjectDescription(e.target.value)}
+        margin="normal"
+        multiline
+        rows={4}
+        required
+      />
+      <FormControl fullWidth margin="normal" required>
+        <InputLabel id="project-stage-label">Project Stage</InputLabel>
+        <Select
+          labelId="project-stage-label"
+          value={projectStage}
+          onChange={(e) => setProjectStage(e.target.value)}
+          label="Project Stage"
+        >
+          <MenuItem value="early">Early</MenuItem>
+          <MenuItem value="late">Late</MenuItem>
+        </Select>
+      </FormControl>
       {error && (
         <Typography color="error" sx={{ mt: 2 }}>
           {error}
