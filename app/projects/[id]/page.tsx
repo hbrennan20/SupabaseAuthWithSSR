@@ -1,12 +1,7 @@
 import { createServerSupabaseClient } from '@/lib/server/server';
+import { cookies } from 'next/headers';
 import { Box, Typography, Paper } from '@mui/material';
-
-interface Project {
-  id: number;
-  created_at: string;
-  project_name: string;
-  // Add other fields as needed
-}
+import ProjectStageSelect from './ProjectStageSelect';
 
 export default async function ProjectPage({ params }: { params: { id: string } }) {
   const supabase = createServerSupabaseClient();
@@ -17,11 +12,21 @@ export default async function ProjectPage({ params }: { params: { id: string } }
     .single();
 
   if (error) {
-    return <Typography color="error">Error loading project: {error.message}</Typography>;
+    console.error('Error fetching project:', error);
+    return <div>Error loading project</div>;
   }
 
-  if (!project) {
-    return <Typography>Project not found</Typography>;
+  async function updateProjectStage(newStage: 'early' | 'late') {
+    'use server'
+    const supabase = createServerSupabaseClient();
+    const { error } = await supabase
+      .from('projects')
+      .update({ project_stage: newStage })
+      .eq('id', params.id);
+
+    if (error) {
+      throw new Error('Failed to update project stage');
+    }
   }
 
   return (
@@ -31,7 +36,14 @@ export default async function ProjectPage({ params }: { params: { id: string } }
         <Typography variant="body1">
           Created: {new Date(project.created_at).toLocaleDateString()}
         </Typography>
-        {/* Add more project details here */}
+        <Typography variant="body1" sx={{ mt: 2 }}>
+          Description: {project.project_description}
+        </Typography>
+        <ProjectStageSelect 
+          initialStage={project.project_stage} 
+          projectId={project.id} 
+          updateProjectStage={updateProjectStage}
+        />
       </Paper>
     </Box>
   );
