@@ -111,13 +111,13 @@ const MatchViewer: React.FC = () => {
               onClick={handlePitchClick}
             >
               {/* Vertical lines */}
-              <Box sx={{ position: 'absolute', inset: 0 }}>
+              <Box sx={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
                 {[10, 25, 45, 55, 75, 90].map((left) => (
-                  <Box key={left} sx={{ position: 'absolute', height: '100%', width: '2px', backgroundColor: 'white', left: `${left}%` }} />
+                  <Box key={left} sx={{ position: 'absolute', height: '100%', width: '2px', backgroundColor: 'rgba(255, 255, 255, 0.5)', left: `${left}%` }} />
                 ))}
                 {/* Goal areas */}
-                <Box sx={{ position: 'absolute', width: '30px', height: '80px', backgroundColor: 'white', top: '50%', left: 0, transform: 'translateY(-50%)' }} />
-                <Box sx={{ position: 'absolute', width: '30px', height: '80px', backgroundColor: 'white', top: '50%', right: 0, transform: 'translateY(-50%)' }} />
+                <Box sx={{ position: 'absolute', width: '30px', height: '80px', border: '2px solid rgba(255, 255, 255, 0.5)', top: '50%', left: 0, transform: 'translateY(-50%)' }} />
+                <Box sx={{ position: 'absolute', width: '30px', height: '80px', border: '2px solid rgba(255, 255, 255, 0.5)', top: '50%', right: 0, transform: 'translateY(-50%)' }} />
               </Box>
               {/* Render tags */}
               {tags.map((tag, index) => (
@@ -125,14 +125,17 @@ const MatchViewer: React.FC = () => {
                   key={index}
                   sx={{
                     position: 'absolute',
-                    width: '10px',
-                    height: '10px',
+                    width: '12px',
+                    height: '12px',
                     borderRadius: '50%',
-                    backgroundColor: tag.type === 'Shot' ? 'blue' : tag.type === 'Tackle' ? 'orange' : 'red',
+                    backgroundColor: tag.type === 'Shot' ? 'rgba(0, 0, 255, 0.7)' : 
+                                     tag.type === 'Tackle' ? 'rgba(255, 165, 0, 0.7)' : 
+                                     'rgba(255, 0, 0, 0.7)',
                     left: `${tag.x}px`,
                     top: `${tag.y}px`,
                     transform: 'translate(-50%, -50%)',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    border: '2px solid white'
                   }}
                   onClick={() => handleTagClick(index)}
                 />
