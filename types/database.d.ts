@@ -83,11 +83,11 @@ export type Database = {
         };
         Relationships: [
           {
-            foreignKeyName: "projects_user_id_fkey";
-            columns: ["user_id"];
+            foreignKeyName: 'projects_user_id_fkey';
+            columns: ['user_id'];
             isOneToOne: false;
-            referencedRelation: "users";
-            referencedColumns: ["id"];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
         ];
       };

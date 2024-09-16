@@ -21,7 +21,9 @@ interface Match {
 
 export default async function MatchViewer() {
   const supabase = createServerSupabaseClient();
-  const { data: matches, error } = await supabase.from('matches').select('*') as { data: Match[] | null, error: any };
+  const { data: matches, error } = (await supabase
+    .from('matches')
+    .select('*')) as { data: Match[] | null; error: Error | null };
 
   if (error) {
     console.error('Error fetching matches:', error);
