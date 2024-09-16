@@ -12,7 +12,8 @@ import {
   IconButton,
   styled,
   Box,
-  Typography
+  Typography,
+  ListItemButton
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -68,14 +69,16 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
           <>
             {menuItems.map((item) => (
               <StyledLink href={item.path} key={item.text}>
-                <ListItem
-                  sx={{ py: 1, color: 'white' }}
-                  selected={pathname === item.path}
-                >
-                  <ListItemIcon sx={{ color: 'white' }}>
-                    {item.icon}
-                  </ListItemIcon>
-                  <ListItemText primary={item.text} sx={{ color: 'white' }} />
+                <ListItem disablePadding>
+                  <ListItemButton
+                    sx={{ py: 1, color: 'white' }}
+                    selected={pathname === item.path}
+                  >
+                    <ListItemIcon sx={{ color: 'white' }}>
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={item.text} sx={{ color: 'white' }} />
+                  </ListItemButton>
                 </ListItem>
               </StyledLink>
             ))}
