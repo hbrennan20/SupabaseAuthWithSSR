@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+
 import { Box, Typography, Button, Grid2, SvgIconProps } from '@mui/material';
 import Link from 'next/link';
 import SecurityIcon from '@mui/icons-material/Security';

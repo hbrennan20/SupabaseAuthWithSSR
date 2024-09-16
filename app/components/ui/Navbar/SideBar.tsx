@@ -44,7 +44,7 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
     { text: 'Upload CSV', icon: <AccountCircleIcon />, path: '/upload_csv' },
     {
       text: 'London Run Clubs',
-      icon: <AccountCircleIcon />,
+      icon: <LockIcon />,
       path: '/runclubs/london'
     },
     {

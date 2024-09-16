@@ -1,7 +1,6 @@
 // RootLayout.tsx
 import React, { type ReactNode } from 'react';
 import { Inter } from 'next/font/google';
-import Footer from '@/app/components/ui/Footer/Footer';
 import ThemeRegistry from '@/theme/ThemeRegistry';
 import RootErrorBoundary from '@/app/components/errorBoundary/ErrorBoundaryPage';
 import { getSession } from '@/lib/server/supabase';
