@@ -45,7 +45,7 @@ const HomePage = () => {
         Welcome to Our App
       </Typography>
       <Typography variant="h5" component="h2" gutterBottom>
-        Here's some of the features I've added so far:
+        Here&apos;s some of the features I&apos;ve added so far:
       </Typography>
       <Box sx={{ mb: 8 }}>
         {/* This Box component adds margin-bottom (mb) of 4 units */}

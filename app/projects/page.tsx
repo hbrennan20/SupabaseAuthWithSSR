@@ -26,7 +26,7 @@ export default async function ProjectsPage() {
     .from('projects')
     .select('id, created_at, project_name, user_id')) as {
     data: Project[] | null;
-    error: any;
+    error: Error | null;
   };
 
   if (error) {
