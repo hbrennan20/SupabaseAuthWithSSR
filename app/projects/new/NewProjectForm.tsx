@@ -35,15 +35,17 @@ export default function NewProjectForm({ userId }: NewProjectFormProps) {
     }
 
     try {
-      // @ts-ignore
-      const { data, error } = await supabase.from('projects').insert([
-        {
-          project_name: projectName.trim(),
-          project_description: projectDescription.trim(),
-          project_stage: projectStage,
-          user_id: userId
-        }
-      ]);
+      const { data, error } = await supabase
+        .from('projects')
+        .insert([
+          {
+            project_name: projectName.trim(),
+            project_description: projectDescription.trim(),
+            project_stage: projectStage,
+            user_id: userId
+          }
+        ])
+        .select();
 
       if (error) throw error;
 

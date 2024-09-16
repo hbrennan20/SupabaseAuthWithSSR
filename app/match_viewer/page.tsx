@@ -21,7 +21,7 @@ interface Match {
 
 export default async function MatchViewer() {
   const supabase = createServerSupabaseClient();
-  const { data: matches, error } = await supabase.from('matches').select('*');
+  const { data: matches, error } = await supabase.from('matches').select('*') as { data: Match[] | null, error: any };
 
   if (error) {
     console.error('Error fetching matches:', error);
@@ -49,7 +49,7 @@ export default async function MatchViewer() {
       </Box>
       <Paper elevation={3}>
         <List>
-          {matches.map((match: Match) => (
+          {matches?.map((match: Match) => (
             <ListItem key={match.id} divider>
               <ListItemText
                 primary={match.match_name}

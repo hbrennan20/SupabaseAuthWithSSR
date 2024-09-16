@@ -62,6 +62,50 @@ export type Database = {
           }
         ];
       };
+      projects: {
+        Row: {
+          id: number;
+          created_at: string;
+          project_name: string;
+          user_id: string;
+        };
+        Insert: {
+          id?: number;
+          created_at?: string;
+          project_name: string;
+          user_id: string;
+        };
+        Update: {
+          id?: number;
+          created_at?: string;
+          project_name?: string;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "projects_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      matches: {
+        Row: {
+          id: number;
+          // Add other fields as needed
+        };
+        Insert: {
+          id?: number;
+          // Add other fields as needed
+        };
+        Update: {
+          id?: number;
+          // Add other fields as needed
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
