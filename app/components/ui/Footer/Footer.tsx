@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 'use client';
 import React from 'react';
-
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Container, Typography, Box, Grid2 } from '@mui/material';
 import Link from 'next/link';
