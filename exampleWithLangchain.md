@@ -26,7 +26,7 @@ import { ChatOpenAI } from '@langchain/openai';
 import { ChatAnthropic } from '@langchain/anthropic';
 import { saveChatToRedis } from './redis';
 import { authenticateAndInitialize } from './Auth';
-import { Redis } from '@upstash/redis';
+
 import { Ratelimit } from '@upstash/ratelimit';
 import { revalidateTag } from 'next/cache';
 import {

@@ -1,7 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import {
+  TextField,
+  Button,
+  Typography,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
+} from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/client/client';
 
@@ -30,8 +38,8 @@ export default function NewProjectForm({ userId }: NewProjectFormProps) {
       const { data, error } = await supabase
         .from('projects')
         .insert([
-          { 
-            project_name: projectName.trim(), 
+          {
+            project_name: projectName.trim(),
             project_description: projectDescription.trim(),
             project_stage: projectStage,
             user_id: userId
@@ -86,12 +94,7 @@ export default function NewProjectForm({ userId }: NewProjectFormProps) {
           {error}
         </Typography>
       )}
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        sx={{ mt: 3 }}
-      >
+      <Button type="submit" variant="contained" color="primary" sx={{ mt: 3 }}>
         Create Project
       </Button>
     </form>
