@@ -61,8 +61,7 @@ const BannerComponent: React.FC<BannerProps> = ({ session, userEmail }) => {
               borderRadius: '12px',
               overflow: 'hidden'
             }}
-          >
-          </Box>
+          ></Box>
         </Grid2>
 
         <Grid2

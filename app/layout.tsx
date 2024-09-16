@@ -37,7 +37,9 @@ export default async function RootLayout({
             }}
           >
             <Sidebar session={isSessionAvailable} />
-            <Box sx={{ paddingTop: '64px', flexGrow: 1 }}> {/* Add this Box */}
+            <Box sx={{ paddingTop: '64px', flexGrow: 1 }}>
+              {' '}
+              {/* Add this Box */}
               {children}
             </Box>
           </body>

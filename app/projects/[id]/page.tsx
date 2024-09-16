@@ -3,7 +3,11 @@ import { cookies } from 'next/headers';
 import { Box, Typography, Paper } from '@mui/material';
 import ProjectStageSelect from './ProjectStageSelect';
 
-export default async function ProjectPage({ params }: { params: { id: string } }) {
+export default async function ProjectPage({
+  params
+}: {
+  params: { id: string };
+}) {
   const supabase = createServerSupabaseClient();
   const { data: project, error } = await supabase
     .from('projects')
@@ -17,7 +21,7 @@ export default async function ProjectPage({ params }: { params: { id: string } }
   }
 
   async function updateProjectStage(newStage: 'early' | 'late') {
-    'use server'
+    'use server';
     const supabase = createServerSupabaseClient();
     const { error } = await supabase
       .from('projects')
@@ -32,16 +36,18 @@ export default async function ProjectPage({ params }: { params: { id: string } }
   return (
     <Box sx={{ p: 3 }}>
       <Paper elevation={3} sx={{ p: 3 }}>
-        <Typography variant="h4" gutterBottom>{project.project_name}</Typography>
+        <Typography variant="h4" gutterBottom>
+          {project.project_name}
+        </Typography>
         <Typography variant="body1">
           Created: {new Date(project.created_at).toLocaleDateString()}
         </Typography>
         <Typography variant="body1" sx={{ mt: 2 }}>
           Description: {project.project_description}
         </Typography>
-        <ProjectStageSelect 
-          initialStage={project.project_stage} 
-          projectId={project.id} 
+        <ProjectStageSelect
+          initialStage={project.project_stage}
+          projectId={project.id}
           updateProjectStage={updateProjectStage}
         />
       </Paper>

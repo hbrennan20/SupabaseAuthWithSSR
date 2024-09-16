@@ -29,7 +29,7 @@ const pricingPlans: PricingPlan[] = [
     price: '$9.99',
     description: 'Perfect for small businesses',
     features: ['Feature 1', 'Feature 2', 'Feature 3'],
-    buttonText: 'Get Started',
+    buttonText: 'Get Started'
   },
   {
     title: 'Pro',
@@ -37,15 +37,21 @@ const pricingPlans: PricingPlan[] = [
     description: 'Ideal for growing companies',
     features: ['All Basic features', 'Feature 4', 'Feature 5', 'Feature 6'],
     buttonText: 'Upgrade to Pro',
-    highlighted: true,
+    highlighted: true
   },
   {
     title: 'Enterprise',
     price: '$49.99',
     description: 'For large-scale operations',
-    features: ['All Pro features', 'Feature 7', 'Feature 8', 'Feature 9', 'Feature 10'],
-    buttonText: 'Contact Sales',
-  },
+    features: [
+      'All Pro features',
+      'Feature 7',
+      'Feature 8',
+      'Feature 9',
+      'Feature 10'
+    ],
+    buttonText: 'Contact Sales'
+  }
 ];
 
 const PricingCard: React.FC<PricingPlan> = ({
@@ -54,7 +60,7 @@ const PricingCard: React.FC<PricingPlan> = ({
   description,
   features,
   buttonText,
-  highlighted = false,
+  highlighted = false
 }) => {
   return (
     <Paper
@@ -69,7 +75,7 @@ const PricingCard: React.FC<PricingPlan> = ({
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: highlighted ? 'primary.main' : 'background.paper',
-        color: highlighted ? 'primary.contrastText' : 'text.primary',
+        color: highlighted ? 'primary.contrastText' : 'text.primary'
       }}
     >
       <Box>
@@ -94,7 +100,10 @@ const PricingCard: React.FC<PricingPlan> = ({
               <ListItemIcon sx={{ minWidth: 'auto', mr: 1 }}>
                 <CheckIcon color={highlighted ? 'secondary' : 'primary'} />
               </ListItemIcon>
-              <ListItemText primary={feature} primaryTypographyProps={{ variant: 'body2' }} />
+              <ListItemText
+                primary={feature}
+                primaryTypographyProps={{ variant: 'body2' }}
+              />
             </ListItem>
           ))}
         </List>
@@ -121,7 +130,7 @@ const Pricing: React.FC = () => {
             sx={{
               fontWeight: 'bold',
               fontFamily: 'Monospace',
-              letterSpacing: '0.1em',
+              letterSpacing: '0.1em'
             }}
           >
             Our Pricing Plans

@@ -1,5 +1,12 @@
 import { createServerSupabaseClient } from '@/lib/server/server';
-import { Box, Typography, Card, CardContent, Grid, Button } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  Button
+} from '@mui/material';
 import Link from 'next/link';
 
 interface Project {
@@ -10,7 +17,9 @@ interface Project {
 
 export default async function MyProjectsPage() {
   const supabase = createServerSupabaseClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return <Typography>Please sign in to view your projects.</Typography>;
@@ -23,12 +32,23 @@ export default async function MyProjectsPage() {
 
   if (error) {
     console.error('Error fetching projects:', error);
-    return <Typography color="error">Error loading projects. Please try again later.</Typography>;
+    return (
+      <Typography color="error">
+        Error loading projects. Please try again later.
+      </Typography>
+    );
   }
 
   return (
     <Box sx={{ p: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mb: 3
+        }}
+      >
         <Typography variant="h4">My Projects</Typography>
         <Box>
           <Link href="/projects" passHref>
@@ -51,7 +71,11 @@ export default async function MyProjectsPage() {
       <Grid container spacing={3}>
         {projects?.map((project: Project) => (
           <Grid item xs={12} sm={6} md={4} key={project.id}>
-            <Link href={`/projects/${project.id}`} passHref style={{ textDecoration: 'none' }}>
+            <Link
+              href={`/projects/${project.id}`}
+              passHref
+              style={{ textDecoration: 'none' }}
+            >
               <Card sx={{ cursor: 'pointer', '&:hover': { boxShadow: 6 } }}>
                 <CardContent>
                   <Typography variant="h6">{project.project_name}</Typography>

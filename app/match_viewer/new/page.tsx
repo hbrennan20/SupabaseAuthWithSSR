@@ -6,8 +6,10 @@ import NewMatchForm from './NewMatchForm';
 
 export default async function NewMatchPage() {
   const supabase = createServerSupabaseClient();
-  
-  const { data: { user } } = await supabase.auth.getUser();
+
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
 
   if (!user) {
     redirect('/auth/signin');
@@ -15,7 +17,9 @@ export default async function NewMatchPage() {
 
   return (
     <Box sx={{ p: 4 }}>
-      <Typography variant="h4" gutterBottom>Add New Match</Typography>
+      <Typography variant="h4" gutterBottom>
+        Add New Match
+      </Typography>
       <Paper elevation={3} sx={{ p: 4, maxWidth: 500, mx: 'auto' }}>
         <NewMatchForm userId={user.id} />
       </Paper>

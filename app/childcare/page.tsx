@@ -18,9 +18,11 @@ const ChildcarePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const supabase = createClient();
-      
+
       // Fetch current user
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
       setUserEmail(user?.email || null);
 
       // Fetch all users from the 'users' table
@@ -43,10 +45,10 @@ const ChildcarePage = () => {
       <h1>Childcare</h1>
       {userEmail && <p>Logged in as: {userEmail}</p>}
       <ChildcareSidebar />
-      
+
       <h2>All Users</h2>
       <ul>
-        {allUsers.map(user => (
+        {allUsers.map((user) => (
           <li key={user.id}>{user.full_name}</li>
         ))}
       </ul>

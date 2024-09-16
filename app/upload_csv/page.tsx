@@ -1,7 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button, Typography, Box, CircularProgress, Paper, Snackbar } from '@mui/material';
+import {
+  Button,
+  Typography,
+  Box,
+  CircularProgress,
+  Paper,
+  Snackbar
+} from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 export default function UploadCSV() {
@@ -20,7 +27,7 @@ export default function UploadCSV() {
 
     setUploading(true);
     // Simulating file upload
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     setSnackbarOpen(true);
     setUploading(false);
     setFile(null);

@@ -25,7 +25,8 @@ const DublinRunClub: React.FC = () => {
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaGIyMDAwIiwiYSI6ImNtMGU3cmI5YjBpMnoya3I0ZHZwYXM5MG4ifQ.AnJMH_l3Hg_W2loQDdM-MQ';
+    mapboxgl.accessToken =
+      'pk.eyJ1IjoiaGIyMDAwIiwiYSI6ImNtMGU3cmI5YjBpMnoya3I0ZHZwYXM5MG4ifQ.AnJMH_l3Hg_W2loQDdM-MQ';
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -64,7 +65,9 @@ const DublinRunClub: React.FC = () => {
     };
   }, []);
   return (
-    <div style={{ height: '200vh', width: '100%' }}> {/* Add this wrapper */}
+    <div style={{ height: '200vh', width: '100%' }}>
+      {' '}
+      {/* Add this wrapper */}
       <div
         ref={mapContainerRef}
         style={{

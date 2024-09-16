@@ -1,5 +1,14 @@
 import React from 'react';
-import { Typography, Container, Box, List, ListItem, ListItemText, Paper, Button } from '@mui/material';
+import {
+  Typography,
+  Container,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Button
+} from '@mui/material';
 import { createServerSupabaseClient } from '@/lib/server/server';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
@@ -12,9 +21,7 @@ interface Match {
 
 export default async function MatchViewer() {
   const supabase = createServerSupabaseClient();
-  const { data: matches, error } = await supabase
-    .from('matches')
-    .select('*');
+  const { data: matches, error } = await supabase.from('matches').select('*');
 
   if (error) {
     console.error('Error fetching matches:', error);
@@ -23,16 +30,19 @@ export default async function MatchViewer() {
 
   return (
     <Container maxWidth="md">
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mb: 3
+        }}
+      >
         <Typography variant="h4" component="h1" gutterBottom>
           Match Viewer
         </Typography>
         <Link href="/match_viewer/new" passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AddIcon />}
-          >
+          <Button variant="contained" color="primary" startIcon={<AddIcon />}>
             New Match
           </Button>
         </Link>

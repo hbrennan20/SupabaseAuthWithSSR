@@ -27,7 +27,7 @@ interface SideBarProps {
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
-  color: theme.palette.text.primary,
+  color: theme.palette.text.primary
 }));
 
 const SideBar: FC<SideBarProps> = ({ session }) => {
@@ -42,30 +42,48 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
     { text: 'Home', icon: <HomeIcon />, path: '/home' },
     { text: 'Projects', icon: <BuildIcon />, path: '/projects' },
     { text: 'Upload CSV', icon: <AccountCircleIcon />, path: '/upload_csv' },
-    { text: 'London Run Clubs', icon: <AccountCircleIcon />, path: '/runclubs/london' },
-    { text: 'Dublin Run Clubs', icon: <AccountCircleIcon />, path: '/runclubs/dublin' },
-    { text: 'Match Viewer', icon: <BuildIcon />, path: '/match_viewer' },
-
-
-
+    {
+      text: 'London Run Clubs',
+      icon: <AccountCircleIcon />,
+      path: '/runclubs/london'
+    },
+    {
+      text: 'Dublin Run Clubs',
+      icon: <AccountCircleIcon />,
+      path: '/runclubs/dublin'
+    },
+    { text: 'Match Viewer', icon: <BuildIcon />, path: '/match_viewer' }
   ];
   const drawerContent = (
-    <Box sx={{ width: 250, bgcolor: 'black', color: 'white', height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
-      <Typography variant="h6" sx={{ p: 2, textAlign: 'center' }}>Menu</Typography>
+    <Box
+      sx={{ width: 250, bgcolor: 'black', color: 'white', height: '100%' }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+    >
+      <Typography variant="h6" sx={{ p: 2, textAlign: 'center' }}>
+        Menu
+      </Typography>
       <List sx={{ pt: 2 }}>
         {session ? (
           <>
             {menuItems.map((item) => (
               <StyledLink href={item.path} key={item.text}>
-                <ListItem sx={{ py: 1, color: 'white' }} selected={pathname === item.path}>
-                  <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
+                <ListItem
+                  sx={{ py: 1, color: 'white' }}
+                  selected={pathname === item.path}
+                >
+                  <ListItemIcon sx={{ color: 'white' }}>
+                    {item.icon}
+                  </ListItemIcon>
                   <ListItemText primary={item.text} sx={{ color: 'white' }} />
                 </ListItem>
               </StyledLink>
             ))}
             <StyledLink href="/profile">
               <ListItem sx={{ py: 1, color: 'white' }}>
-                <ListItemIcon sx={{ color: 'white' }}><AccountCircleIcon /></ListItemIcon>
+                <ListItemIcon sx={{ color: 'white' }}>
+                  <AccountCircleIcon />
+                </ListItemIcon>
                 <ListItemText primary="Profile" sx={{ color: 'white' }} />
               </ListItem>
             </StyledLink>

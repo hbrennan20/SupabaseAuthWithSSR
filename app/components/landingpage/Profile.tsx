@@ -18,9 +18,7 @@ const UserProfileComponent = () => {
         alignItems: 'center',
         p: 4
       }}
-    >
-
-    </Box>
+    ></Box>
   );
 };
 

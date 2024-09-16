@@ -1,7 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button
+} from '@mui/material';
 
 interface ProjectStageSelectProps {
   initialStage: 'early' | 'late';
@@ -9,7 +15,11 @@ interface ProjectStageSelectProps {
   updateProjectStage: (newStage: 'early' | 'late') => Promise<void>;
 }
 
-export default function ProjectStageSelect({ initialStage, projectId, updateProjectStage }: ProjectStageSelectProps) {
+export default function ProjectStageSelect({
+  initialStage,
+  projectId,
+  updateProjectStage
+}: ProjectStageSelectProps) {
   const [stage, setStage] = useState(initialStage);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -38,15 +48,17 @@ export default function ProjectStageSelect({ initialStage, projectId, updateProj
           labelId="project-stage-label"
           value={stage}
           label="Stage"
-          onChange={(e) => handleStageChange(e.target.value as 'early' | 'late')}
+          onChange={(e) =>
+            handleStageChange(e.target.value as 'early' | 'late')
+          }
         >
           <MenuItem value="early">Early</MenuItem>
           <MenuItem value="late">Late</MenuItem>
         </Select>
       </FormControl>
-      <Button 
-        variant="contained" 
-        color="primary" 
+      <Button
+        variant="contained"
+        color="primary"
         onClick={handleSubmit}
         disabled={isUpdating}
         sx={{ mt: 2 }}

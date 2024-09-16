@@ -18,11 +18,11 @@ export default async function LandingPage() {
       <BannerComponent session={isSessionAvailable} userEmail={userEmail} />
       <FeatureCard />
       <Divider />
-      <Pricing 
+      <Pricing
         title="Our Pricing"
         price="$9.99"
         description="Get started with our basic plan"
-        features={["Feature 1", "Feature 2", "Feature 3"]}
+        features={['Feature 1', 'Feature 2', 'Feature 3']}
         buttonText="Subscribe Now"
       />
       <Divider />

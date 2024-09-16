@@ -30,8 +30,8 @@ export default function NewMatchForm({ userId }: NewMatchFormProps) {
       const { data, error } = await supabase
         .from('matches')
         .insert([
-          { 
-            match_name: matchName.trim(), 
+          {
+            match_name: matchName.trim(),
             match_url: matchUrl.trim(),
             match_date: matchDate || null,
             user_id: userId
@@ -75,7 +75,7 @@ export default function NewMatchForm({ userId }: NewMatchFormProps) {
         onChange={(e) => setMatchDate(e.target.value)}
         margin="normal"
         InputLabelProps={{
-          shrink: true,
+          shrink: true
         }}
       />
       {error && (
@@ -83,12 +83,7 @@ export default function NewMatchForm({ userId }: NewMatchFormProps) {
           {error}
         </Typography>
       )}
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        sx={{ mt: 3 }}
-      >
+      <Button type="submit" variant="contained" color="primary" sx={{ mt: 3 }}>
         Create Match
       </Button>
     </form>
