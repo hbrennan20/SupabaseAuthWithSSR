@@ -29,15 +29,12 @@ export default function NewMatchForm({ userId }: NewMatchFormProps) {
     try {
       const { data, error } = await supabase
         .from('matches')
-        .insert([
-          {
-            match_name: matchName.trim(),
-            match_url: matchUrl.trim(),
-            match_date: matchDate || null,
-            user_id: userId
-          }
-        ])
-        .select();
+        .insert({
+          name: matchName.trim(),
+          url: matchUrl.trim(),
+          date: matchDate || null,
+          user_id: userId
+        } as any);
 
       if (error) throw error;
 
