@@ -27,6 +27,8 @@ export default function NewMatchForm({ userId }: NewMatchFormProps) {
     }
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      /* prettier-ignore */
       const { data, error } = await supabase
         .from('matches')
         .insert({
