@@ -68,21 +68,24 @@ export type Database = {
           created_at: string;
           project_name: string;
           user_id: string;
-          project_stage: string; // Add this line
+          project_stage: string;
+          project_description: string | null; // Add this line
         };
         Insert: {
           id?: number;
           created_at?: string;
           project_name: string;
           user_id: string;
-          project_stage?: string; // Add this line
+          project_stage?: string;
+          project_description?: string | null; // Add this line
         };
         Update: {
           id?: number;
           created_at?: string;
           project_name?: string;
           user_id?: string;
-          project_stage?: string; // Add this line
+          project_stage?: string;
+          project_description?: string | null; // Add this line
         };
         Relationships: [
           {
@@ -118,11 +121,11 @@ export type Database = {
         };
         Relationships: [
           {
-            foreignKeyName: "matches_user_id_fkey";
-            columns: ["user_id"];
+            foreignKeyName: 'matches_user_id_fkey';
+            columns: ['user_id'];
             isOneToOne: false;
-            referencedRelation: "users";
-            referencedColumns: ["id"];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
         ];
       };

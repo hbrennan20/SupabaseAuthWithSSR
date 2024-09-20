@@ -43,10 +43,11 @@ export default async function ProjectPage({
           Created: {new Date(project.created_at).toLocaleDateString()}
         </Typography>
         <Typography variant="body1" sx={{ mt: 2 }}>
-          Description: {project.project_description}
+          Description:{' '}
+          {project.project_description || 'No description available'}
         </Typography>
         <ProjectStageSelect
-          initialStage={project.project_stage}
+          initialStage={project.project_stage as 'early' | 'late'}
           projectId={project.id}
           updateProjectStage={updateProjectStage}
         />
