@@ -94,17 +94,34 @@ export type Database = {
       matches: {
         Row: {
           id: number;
-          // Add other fields as needed
+          match_name: string;
+          url: string | null;
+          date: string | null;
+          user_id: string;
         };
         Insert: {
           id?: number;
-          // Add other fields as needed
+          match_name: string;
+          url?: string | null;
+          date?: string | null;
+          user_id: string;
         };
         Update: {
           id?: number;
-          // Add other fields as needed
+          match_name?: string;
+          url?: string | null;
+          date?: string | null;
+          user_id?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "matches_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: {

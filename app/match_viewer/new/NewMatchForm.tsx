@@ -17,7 +17,7 @@ export default function NewMatchForm({ userId }: NewMatchFormProps) {
   const router = useRouter();
   const supabase = createClient();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
@@ -27,18 +27,12 @@ export default function NewMatchForm({ userId }: NewMatchFormProps) {
     }
 
     try {
-      // @ts-ignore
-      /* prettier-ignore */
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      /* prettier-ignore */
-      const { data, error } = await supabase
-        .from('matches')
-        .insert({
-          name: matchName.trim(),
-          url: matchUrl.trim(),
-          date: matchDate || null,
-          user_id: userId
-        } as any);
+      const { data, error } = await supabase.from('matches').insert({
+        match_name: matchName.trim(),
+        url: matchUrl.trim(),
+        date: matchDate || null,
+        user_id: userId
+      });
 
       if (error) throw error;
 
