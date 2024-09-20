@@ -1,10 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Typography, Container, Box, Grid, Paper } from '@mui/material';
+import { Typography, Container, Box, Grid, Paper, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PitchTools from '../pitch_tagging_tools';
+import { useRouter } from 'next/navigation';
 
 const MatchViewer: React.FC = () => {
+  const router = useRouter();
   const [videoSrc, setVideoSrc] = useState<string>('');
   const [tags, setTags] = useState<{ x: number; y: number; type?: string }[]>(
     []
@@ -72,9 +75,18 @@ const MatchViewer: React.FC = () => {
 
   return (
     <Container maxWidth="xl">
-      <Typography variant="h2" component="h1" gutterBottom align="center">
-        Match Viewer
-      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+        <IconButton
+          onClick={() => router.back()}
+          sx={{ mr: 2 }}
+          aria-label="back"
+        >
+          <ArrowBackIcon />
+        </IconButton>
+        <Typography variant="h2" component="h1" gutterBottom>
+          Match Viewer
+        </Typography>
+      </Box>
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
           <Paper elevation={3} sx={{ p: 2, mb: 2 }}>

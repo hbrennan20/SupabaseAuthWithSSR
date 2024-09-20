@@ -97,6 +97,41 @@ export type Database = {
           }
         ];
       };
+      reports: {
+        Row: {
+          id: number;
+          created_at: string;
+          report_name: string;
+          user_id: string;
+          report_stage: string;
+          report_description: string | null;
+        };
+        Insert: {
+          id?: number;
+          created_at?: string;
+          report_name: string;
+          user_id: string;
+          report_stage?: string;
+          report_description?: string | null;
+        };
+        Update: {
+          id?: number;
+          created_at?: string;
+          report_name?: string;
+          user_id?: string;
+          report_stage?: string;
+          report_description?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'reports_user_id_fkey';
+            columns: ['user_id'];
+            isOneToOne: false;
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
       matches: {
         Row: {
           id: number;

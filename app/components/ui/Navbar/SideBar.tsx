@@ -42,17 +42,9 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
   const menuItems = [
     { text: 'Home', icon: <HomeIcon />, path: '/home' },
     { text: 'Projects', icon: <BuildIcon />, path: '/projects' },
+    { text: 'Reports', icon: <BuildIcon />, path: '/reports' },
+
     { text: 'Upload CSV', icon: <AccountCircleIcon />, path: '/upload_csv' },
-    {
-      text: 'London Run Clubs',
-      icon: <LockIcon />,
-      path: '/runclubs/london'
-    },
-    {
-      text: 'Dublin Run Clubs',
-      icon: <AccountCircleIcon />,
-      path: '/runclubs/dublin'
-    },
     { text: 'Match Viewer', icon: <BuildIcon />, path: '/match_viewer' }
   ];
   const drawerContent = (
