@@ -32,7 +32,8 @@ export default async function RootLayout({
             style={{
               display: 'flex',
               flexDirection: 'column',
-              minHeight: '100vh'
+              minHeight: '100vh',
+              backgroundColor: '#3f51b5' // Added background color
             }}
           >
             <Sidebar session={isSessionAvailable} />
@@ -43,13 +44,19 @@ export default async function RootLayout({
                   position: 'absolute',
                   top: '16px',
                   left: '16px',
-                  color: '#3f51b5', // A nice blue color
-                  fontWeight: 'bold'
+                  color: 'white',
+                  fontWeight: 'bold',
+                  zIndex: 1000, // Ensure the heading is on top of other elements
+                  backgroundColor: 'rgba(63, 81, 181, 0.7)', // Semi-transparent background
+                  padding: '8px 16px', // Add some padding
+                  borderRadius: '4px' // Rounded corners
                 }}
               >
                 Reporting Helper
               </Typography>
-              {children}
+              <Box sx={{ position: 'relative', zIndex: 1 }}>
+                {children}
+              </Box>
             </Box>
           </body>
         </RootErrorBoundary>
