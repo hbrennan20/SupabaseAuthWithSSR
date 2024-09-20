@@ -20,10 +20,7 @@ export default async function NewProjectPage() {
   return (
     <Box sx={{ p: 4, maxWidth: 800, mx: 'auto' }}>
       <Link href="/reports" passHref>
-        <IconButton
-          aria-label="back to reports"
-          sx={{ mb: 3 }}
-        >
+        <IconButton aria-label="back to reports" sx={{ mb: 3 }}>
           <ArrowBackIcon />
         </IconButton>
       </Link>

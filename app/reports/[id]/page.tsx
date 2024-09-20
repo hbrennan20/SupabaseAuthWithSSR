@@ -21,7 +21,9 @@ export default async function ReportPage({
   }
 
   return (
-    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 3 }}>
+    <Box
+      sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 3 }}
+    >
       <IconButton
         component={Link}
         href="/reports"
@@ -30,7 +32,10 @@ export default async function ReportPage({
       >
         <ArrowBackIcon />
       </IconButton>
-      <Paper elevation={3} sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+      <Paper
+        elevation={3}
+        sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column' }}
+      >
         <Typography variant="h4" gutterBottom>
           {report.report_name}
         </Typography>

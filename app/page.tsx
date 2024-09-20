@@ -13,7 +13,9 @@ export default async function LandingPage() {
   const isSessionAvailable = session !== null;
   const userEmail = session?.email;
   return (
-    <div style={{ backgroundColor: 'rgba(63, 81, 181, 0.7)', minHeight: '100vh' }}>
+    <div
+      style={{ backgroundColor: 'rgba(63, 81, 181, 0.7)', minHeight: '100vh' }}
+    >
       <BannerComponent session={isSessionAvailable} userEmail={userEmail} />
       <FeatureCard />
       <Divider />

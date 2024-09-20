@@ -54,9 +54,7 @@ export default async function RootLayout({
               >
                 Reporting Helper
               </Typography>
-              <Box sx={{ position: 'relative', zIndex: 1 }}>
-                {children}
-              </Box>
+              <Box sx={{ position: 'relative', zIndex: 1 }}>{children}</Box>
             </Box>
           </body>
         </RootErrorBoundary>

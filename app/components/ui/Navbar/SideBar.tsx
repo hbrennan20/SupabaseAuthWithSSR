@@ -104,7 +104,13 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
         color="inherit"
         aria-label="menu"
         onClick={toggleDrawer(true)}
-        sx={{ position: 'fixed', top: 16, left: 16, zIndex: 1300, paddingTop: 3 }}
+        sx={{
+          position: 'fixed',
+          top: 16,
+          left: 16,
+          zIndex: 1300,
+          paddingTop: 3
+        }}
       >
         <MenuIcon />
       </IconButton>
