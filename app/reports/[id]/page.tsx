@@ -43,8 +43,7 @@ export default async function ReportPage({
           Created: {new Date(report.created_at).toLocaleDateString()}
         </Typography>
         <Typography variant="body1" sx={{ mt: 2 }}>
-          Description:{' '}
-          {report.report_description || 'No description available'}
+          Description: {report.report_description || 'No description available'}
         </Typography>
         <ProjectStageSelect
           initialStage={report.report_stage as 'early' | 'late'}

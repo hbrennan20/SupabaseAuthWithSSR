@@ -51,9 +51,11 @@ export default function NewReportForm({ userId }: NewReportFormProps) {
 
       console.log('New report added:', data);
       router.push('/reports');
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error adding new report:', error);
-      setError('Failed to add new report. Please try again.');
+      setError(
+        `Failed to add new report: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
     }
   };
 
