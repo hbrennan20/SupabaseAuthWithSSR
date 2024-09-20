@@ -1,7 +1,7 @@
 import { createServerSupabaseClient } from '@/lib/server/server';
-import { cookies } from 'next/headers';
-import { Box, Typography, Paper } from '@mui/material';
-import ProjectStageSelect from './ReportStageSelect';
+import { Box, Typography, Paper, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from 'next/link';
 
 export default async function ReportPage({
   params
@@ -20,22 +20,17 @@ export default async function ReportPage({
     return <div>Error loading report</div>;
   }
 
-  async function updateReportStage(newStage: 'early' | 'late') {
-    'use server';
-    const supabase = createServerSupabaseClient();
-    const { error } = await supabase
-      .from('reports')
-      .update({ report_stage: newStage })
-      .eq('id', params.id);
-
-    if (error) {
-      throw new Error('Failed to update report stage');
-    }
-  }
-
   return (
-    <Box sx={{ p: 3 }}>
-      <Paper elevation={3} sx={{ p: 3 }}>
+    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 3 }}>
+      <IconButton
+        component={Link}
+        href="/reports"
+        sx={{ alignSelf: 'flex-start', mb: 2 }}
+        aria-label="Back to Reports"
+      >
+        <ArrowBackIcon />
+      </IconButton>
+      <Paper elevation={3} sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h4" gutterBottom>
           {report.report_name}
         </Typography>
@@ -45,10 +40,6 @@ export default async function ReportPage({
         <Typography variant="body1" sx={{ mt: 2 }}>
           Description: {report.report_description || 'No description available'}
         </Typography>
-        <ProjectStageSelect
-          initialStage={report.report_stage as 'early' | 'late'}
-          updateReportStage={updateReportStage}
-        />
       </Paper>
     </Box>
   );

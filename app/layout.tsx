@@ -5,7 +5,7 @@ import ThemeRegistry from '@/theme/ThemeRegistry';
 import RootErrorBoundary from '@/app/components/errorBoundary/ErrorBoundaryPage';
 import { getSession } from '@/lib/server/supabase';
 import Sidebar from '@/app/components/ui/Navbar/SideBar';
-import { Box } from '@mui/material'; // Add this import
+import { Box, Typography } from '@mui/material'; // Update this import
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -36,9 +36,19 @@ export default async function RootLayout({
             }}
           >
             <Sidebar session={isSessionAvailable} />
-            <Box sx={{ paddingTop: '64px', flexGrow: 1 }}>
-              {' '}
-              {/* Add this Box */}
+            <Box sx={{ paddingTop: '64px', flexGrow: 1, position: 'relative' }}>
+              <Typography
+                variant="h5"
+                sx={{
+                  position: 'absolute',
+                  top: '16px',
+                  left: '16px',
+                  color: '#3f51b5', // A nice blue color
+                  fontWeight: 'bold'
+                }}
+              >
+                Reporting Helper
+              </Typography>
               {children}
             </Box>
           </body>
