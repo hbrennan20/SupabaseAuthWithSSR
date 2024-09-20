@@ -68,18 +68,21 @@ export type Database = {
           created_at: string;
           project_name: string;
           user_id: string;
+          project_stage: string; // Add this line
         };
         Insert: {
           id?: number;
           created_at?: string;
           project_name: string;
           user_id: string;
+          project_stage?: string; // Add this line
         };
         Update: {
           id?: number;
           created_at?: string;
           project_name?: string;
           user_id?: string;
+          project_stage?: string; // Add this line
         };
         Relationships: [
           {

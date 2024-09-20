@@ -5,9 +5,8 @@ import Profile from './components/landingpage/Profile';
 import Divider from '@mui/material/Divider';
 import FeatureCard from './components/landingpage/FeatureCard';
 import Pricing from './components/landingpage/Pricing';
-
 import Testimonials from './components/landingpage/Testimonials';
-import { getSession } from '@/lib/server/supabase'; // Import getSession
+import { getSession } from '@/lib/server/supabase';
 
 export default async function LandingPage() {
   const session = await getSession();
@@ -18,13 +17,7 @@ export default async function LandingPage() {
       <BannerComponent session={isSessionAvailable} userEmail={userEmail} />
       <FeatureCard />
       <Divider />
-      <Pricing
-        title="Our Pricing"
-        price="$9.99"
-        description="Get started with our basic plan"
-        features={['Feature 1', 'Feature 2', 'Feature 3']}
-        buttonText="Subscribe Now"
-      />
+      <Pricing />
       <Divider />
       <Testimonials />
       <Divider />
