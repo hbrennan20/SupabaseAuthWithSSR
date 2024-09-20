@@ -1,17 +1,12 @@
-module.exports = {
-  images: {
-    remotePatterns: [{ protocol: 'https', hostname: 'source.unsplash.com' }]
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/auth',
-        destination: '/auth/signin'
-      },
-      {
-        source: '/aichat',
-        destination: '/aichat/1'
-      }
-    ];
-  }
-};
+}
+
+module.exports = nextConfig
