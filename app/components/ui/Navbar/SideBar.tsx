@@ -49,7 +49,7 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
   ];
   const drawerContent = (
     <Box
-      sx={{ width: 250, bgcolor: 'black', color: 'white', height: '100%' }}
+      sx={{ width: 250, bgcolor: '#3f51b5', color: 'white', height: '100%' }}
       role="presentation"
       onClick={toggleDrawer(false)}
     >
