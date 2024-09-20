@@ -13,7 +13,7 @@ export default async function LandingPage() {
   const isSessionAvailable = session !== null;
   const userEmail = session?.email;
   return (
-    <>
+    <div style={{ backgroundColor: '#6629dd', minHeight: '100vh' }}>
       <BannerComponent session={isSessionAvailable} userEmail={userEmail} />
       <FeatureCard />
       <Divider />
@@ -23,6 +23,6 @@ export default async function LandingPage() {
       <Divider />
       <Profile />
       <Divider />
-    </>
+    </div>
   );
 }

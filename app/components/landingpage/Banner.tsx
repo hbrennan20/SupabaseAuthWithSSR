@@ -36,7 +36,7 @@ const BannerComponent: React.FC<BannerProps> = ({ session, userEmail }) => {
     <Box
       sx={{
         padding: '4rem',
-        backgroundColor: '#f5f5f5' // Background color for contrast
+        backgroundColor: '#fcfbf3' // Changed background color
       }}
     >
       <Grid2
