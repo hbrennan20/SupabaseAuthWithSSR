@@ -34,7 +34,7 @@ const Custom404: React.FC = () => {
       <Typography variant="body2" sx={{ marginBottom: '2rem' }}>
         You can try searching for what you need or go back to the homepage.
       </Typography>
-      <Link href="/" passHref>
+      <Link href="/home" passHref>
         <Button variant="contained" startIcon={<HomeIcon />} color="primary">
           Back to Home
         </Button>
