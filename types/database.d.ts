@@ -41,16 +41,22 @@ export type Database = {
           email: string | null;
           full_name: string | null;
           id: string;
+          username: string | null;
+          subscription_tier: string | null; // Add this line
         };
         Insert: {
           email?: string | null;
           full_name?: string | null;
           id: string;
+          username?: string | null;
+          subscription_tier?: string | null; // Add this line
         };
         Update: {
           email?: string | null;
           full_name?: string | null;
           id?: string;
+          username?: string | null;
+          subscription_tier?: string | null; // Add this line
         };
         Relationships: [
           {
