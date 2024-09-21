@@ -35,12 +35,12 @@ const pricingPlans: PricingPlan[] = [
     buttonLink: 'https://buy.stripe.com/test_cN200Z9BS1A5dUI144'
   },
   {
-    title: 'Pro',
+    title: 'Premium',
     price: '$19.99',
     description: 'Ideal for growing companies',
     features: ['All Basic features', 'Feature 4', 'Feature 5', 'Feature 6'],
-    buttonText: 'Upgrade to Pro',
-    buttonLink: '/signup?plan=pro',
+    buttonText: 'Upgrade to Premium',
+    buttonLink: 'https://buy.stripe.com/test_14kdRP3duceJg2QaEF',
     highlighted: true
   },
   {
