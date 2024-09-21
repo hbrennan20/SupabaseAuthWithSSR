@@ -60,7 +60,9 @@ export default async function MatchViewer() {
               Unlock Match Viewer and more!
             </Typography>
             <Typography paragraph>
-              The Match Viewer feature is exclusive to our Enterprise tier subscribers. Upgrade now to access advanced analytics, unlimited matches, and premium support.
+              The Match Viewer feature is exclusive to our Enterprise tier
+              subscribers. Upgrade now to access advanced analytics, unlimited
+              matches, and premium support.
             </Typography>
           </CardContent>
           <CardActions sx={{ justifyContent: 'center', pb: 3 }}>

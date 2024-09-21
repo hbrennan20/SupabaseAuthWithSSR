@@ -20,12 +20,17 @@ export default function TestingPage() {
     setSelectedDate(newDate);
   };
 
-  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
-      return;
-    }
-    setIsDrawerOpen(open);
-  };
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+      setIsDrawerOpen(open);
+    };
 
   return (
     <Box
@@ -35,7 +40,7 @@ export default function TestingPage() {
         alignItems: 'center',
         p: 1, // Reduced from 2 to 1
         backgroundColor: '#d4b4e0', // Light purple background
-        minHeight: '100vh', // Ensure the background covers the full viewport height
+        minHeight: '100vh' // Ensure the background covers the full viewport height
       }}
     >
       <Box
@@ -46,7 +51,7 @@ export default function TestingPage() {
           flexDirection: 'column',
           alignItems: 'stretch',
           px: 0.5, // Reduced from 1 to 0.5
-          mt: 2, // Reduced from 4 to 2
+          mt: 2 // Reduced from 4 to 2
         }}
       >
         <Typography variant="h5" sx={{ mb: 1, fontWeight: 'bold' }}>
@@ -68,7 +73,9 @@ export default function TestingPage() {
           open={isDrawerOpen}
           onClose={toggleDrawer(false)}
         >
-          <Box sx={{ p: 2, pt: 8, mt: 6 }}> {/* Increased pt to 8 and added mt: 6 */}
+          <Box sx={{ p: 2, pt: 8, mt: 6 }}>
+            {' '}
+            {/* Increased pt to 8 and added mt: 6 */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
                 value={selectedDate}
@@ -80,7 +87,9 @@ export default function TestingPage() {
         </Drawer>
 
         {selectedDate && (
-          <Typography variant="body2" sx={{ mt: 0.5, mb: 2 }}> {/* Changed to body2 and reduced margins */}
+          <Typography variant="body2" sx={{ mt: 0.5, mb: 2 }}>
+            {' '}
+            {/* Changed to body2 and reduced margins */}
             Selected date: {selectedDate.format('MMMM D, YYYY')}
           </Typography>
         )}

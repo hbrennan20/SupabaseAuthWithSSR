@@ -64,7 +64,7 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
     { text: 'Home', icon: <HomeIcon />, path: '/home' },
     { text: 'Projects', icon: <BuildIcon />, path: '/projects' },
     { text: 'Reports', icon: <BuildIcon />, path: '/reports' },
-    { text: 'Testing', icon: <BuildIcon />, path: '/testing' },    
+    { text: 'Testing', icon: <BuildIcon />, path: '/testing' },
 
     { text: 'Upload CSV', icon: <AccountCircleIcon />, path: '/upload_csv' },
     { text: 'Match Viewer', icon: <BuildIcon />, path: '/match_viewer' }

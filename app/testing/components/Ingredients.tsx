@@ -1,5 +1,15 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+  Box
+} from '@mui/material';
 
 export interface Ingredient {
   name: string;
@@ -8,7 +18,7 @@ export interface Ingredient {
 }
 
 const ingredientsData: Ingredient[] = [
-  { name: 'Sugar', amount: 1, unit: 'cup' },
+  { name: 'Sugar', amount: 1, unit: 'cup' }
   // ... other ingredients
 ];
 
@@ -23,13 +33,20 @@ export default function Ingredients() {
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: 'bold' }}>Ingredient</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 'bold' }}>Amount</TableCell>
+              <TableCell align="right" sx={{ fontWeight: 'bold' }}>
+                Amount
+              </TableCell>
               <TableCell sx={{ fontWeight: 'bold' }}>Unit</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {ingredientsData.map((ingredient, index) => (
-              <TableRow key={index} sx={{ '&:nth-of-type(odd)': { backgroundColor: 'action.hover' } }}>
+              <TableRow
+                key={index}
+                sx={{
+                  '&:nth-of-type(odd)': { backgroundColor: 'action.hover' }
+                }}
+              >
                 <TableCell component="th" scope="row">
                   {ingredient.name}
                 </TableCell>

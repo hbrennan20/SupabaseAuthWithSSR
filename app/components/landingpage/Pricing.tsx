@@ -122,7 +122,9 @@ const PricingCard: React.FC<PricingPlan> = ({
           sx={{ mt: 3 }}
           component="a"
           target={buttonLink.startsWith('http') ? '_blank' : undefined}
-          rel={buttonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+          rel={
+            buttonLink.startsWith('http') ? 'noopener noreferrer' : undefined
+          }
         >
           {buttonText}
         </Button>
