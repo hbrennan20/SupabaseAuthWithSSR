@@ -130,7 +130,7 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
           aria-label="menu"
           onClick={toggleDrawer(true)}
           sx={{
-            position: 'fixed',
+            position: 'absolute', // Changed from 'fixed' to 'absolute'
             top: 60,
             left: 24,
             zIndex: 1300,
