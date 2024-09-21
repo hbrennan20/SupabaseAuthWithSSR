@@ -13,6 +13,7 @@ import {
   Divider
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import Link from 'next/link';
 
 interface PricingPlan {
   title: string;
@@ -20,6 +21,7 @@ interface PricingPlan {
   description: string;
   features: string[];
   buttonText: string;
+  buttonLink: string;
   highlighted?: boolean;
 }
 
@@ -29,7 +31,8 @@ const pricingPlans: PricingPlan[] = [
     price: '$9.99',
     description: 'Perfect for small businesses',
     features: ['Feature 1', 'Feature 2', 'Feature 3'],
-    buttonText: 'Get Started'
+    buttonText: 'Get Started',
+    buttonLink: 'https://buy.stripe.com/test_cN200Z9BS1A5dUI144'
   },
   {
     title: 'Pro',
@@ -37,6 +40,7 @@ const pricingPlans: PricingPlan[] = [
     description: 'Ideal for growing companies',
     features: ['All Basic features', 'Feature 4', 'Feature 5', 'Feature 6'],
     buttonText: 'Upgrade to Pro',
+    buttonLink: '/signup?plan=pro',
     highlighted: true
   },
   {
@@ -50,7 +54,8 @@ const pricingPlans: PricingPlan[] = [
       'Feature 9',
       'Feature 10'
     ],
-    buttonText: 'Contact Sales'
+    buttonText: 'Contact Sales',
+    buttonLink: '/contact'
   }
 ];
 
@@ -60,6 +65,7 @@ const PricingCard: React.FC<PricingPlan> = ({
   description,
   features,
   buttonText,
+  buttonLink,
   highlighted = false
 }) => {
   return (
@@ -108,14 +114,19 @@ const PricingCard: React.FC<PricingPlan> = ({
           ))}
         </List>
       </Box>
-      <Button
-        variant={highlighted ? 'contained' : 'outlined'}
-        color={highlighted ? 'secondary' : 'primary'}
-        fullWidth
-        sx={{ mt: 3 }}
-      >
-        {buttonText}
-      </Button>
+      <Link href={buttonLink} passHref legacyBehavior>
+        <Button
+          variant={highlighted ? 'contained' : 'outlined'}
+          color={highlighted ? 'secondary' : 'primary'}
+          fullWidth
+          sx={{ mt: 3 }}
+          component="a"
+          target={buttonLink.startsWith('http') ? '_blank' : undefined}
+          rel={buttonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+        >
+          {buttonText}
+        </Button>
+      </Link>
     </Paper>
   );
 };
