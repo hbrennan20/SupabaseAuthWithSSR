@@ -9,6 +9,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import dayjs, { Dayjs } from 'dayjs';
 import { useRouter } from 'next/navigation';
 import Ingredients from './components/Ingredients'; // Updated import
+import ReactPlayer from 'react-player'; // Add this import
 
 export default function TestingPage() {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(dayjs());
@@ -32,7 +33,7 @@ export default function TestingPage() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        p: 2, // Reduced from 3 to 2
+        p: 1, // Reduced from 2 to 1
         backgroundColor: '#d4b4e0', // Light purple background
         minHeight: '100vh', // Ensure the background covers the full viewport height
       }}
@@ -40,15 +41,15 @@ export default function TestingPage() {
       <Box
         sx={{
           width: '100%',
-          maxWidth: '1200px', // Add a max-width for better responsiveness
+          maxWidth: '1000px', // Reduced from 1200px to 1000px
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'stretch',
-          px: 1, // Reduced from 2 to 1
-          mt: 4, // Added top margin to move everything down
+          px: 0.5, // Reduced from 1 to 0.5
+          mt: 2, // Reduced from 4 to 2
         }}
       >
-        <Typography variant="h4" sx={{ mb: 2, fontWeight: 'bold' }}>
+        <Typography variant="h5" sx={{ mb: 1, fontWeight: 'bold' }}>
           Calendar View
         </Typography>
 
@@ -56,7 +57,8 @@ export default function TestingPage() {
           startIcon={<CalendarMonthIcon />}
           onClick={toggleDrawer(true)}
           variant="contained"
-          sx={{ mt: 2, mb: 2 }}
+          size="small" // Added size="small"
+          sx={{ mt: 1, mb: 1 }} // Reduced margins
         >
           Open Calendar
         </Button>
@@ -78,10 +80,21 @@ export default function TestingPage() {
         </Drawer>
 
         {selectedDate && (
-          <Typography variant="body1" sx={{ mt: 1, mb: 4 }}> {/* Added mb: 4 for spacing */}
+          <Typography variant="body2" sx={{ mt: 0.5, mb: 2 }}> {/* Changed to body2 and reduced margins */}
             Selected date: {selectedDate.format('MMMM D, YYYY')}
           </Typography>
         )}
+
+        {/* Add the live stream component here */}
+        <Box sx={{ mb: 2, width: '100%', aspectRatio: '16/9' }}>
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" // Replace with your actual stream URL
+            width="100%"
+            height="100%"
+            playing={true}
+            controls={true}
+          />
+        </Box>
 
         <Ingredients />
       </Box>
