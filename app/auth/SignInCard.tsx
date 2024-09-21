@@ -103,7 +103,7 @@ export default function SignInCard() {
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          gap: 1
+          gap: 2 // Increased gap
         }}
       >
         <Button
@@ -113,6 +113,13 @@ export default function SignInCard() {
           color="secondary"
           onClick={() => signInWithGoogle()}
           startIcon={<GoogleIcon />}
+          sx={{
+            py: 6.5, // Increased vertical padding
+            fontSize: '1.1rem', // Larger font size
+            '& .MuiButton-startIcon': {
+              marginRight: 2 // More space between icon and text
+            }
+          }}
         >
           Sign in with Google
         </Button>

@@ -106,11 +106,24 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
             </StyledLink>
           </>
         ) : (
-          <StyledLink href="/auth">
-            <ListItem sx={{ py: 1, color: 'white' }}>
-              <ListItemText primary="Sign in" sx={{ color: 'white' }} />
-            </ListItem>
-          </StyledLink>
+          <>
+            <StyledLink href="/auth">
+              <ListItem sx={{ py: 1, color: 'white' }}>
+                <ListItemIcon sx={{ color: 'white' }}>
+                  <LockIcon />
+                </ListItemIcon>
+                <ListItemText primary="Sign in" sx={{ color: 'white' }} />
+              </ListItem>
+            </StyledLink>
+            <StyledLink href="/auth/signup">
+              <ListItem sx={{ py: 1, color: 'white' }}>
+                <ListItemIcon sx={{ color: 'white' }}>
+                  <AccountCircleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Sign up" sx={{ color: 'white' }} />
+              </ListItem>
+            </StyledLink>
+          </>
         )}
       </List>
       {session && (
