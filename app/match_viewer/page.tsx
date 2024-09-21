@@ -7,11 +7,15 @@ import {
   ListItem,
   ListItemText,
   Paper,
-  Button
+  Button,
+  Card,
+  CardContent,
+  CardActions
 } from '@mui/material';
 import { createServerSupabaseClient } from '@/lib/server/server';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 interface Match {
   id: string;
@@ -21,6 +25,62 @@ interface Match {
 
 export default async function MatchViewer() {
   const supabase = createServerSupabaseClient();
+
+  // Check user's subscription tier
+  const { data: user, error: userError } = await supabase.auth.getUser();
+  if (userError) {
+    console.error('Error fetching user:', userError);
+    return <div>Error loading user data: {userError.message}</div>;
+  }
+
+  if (!user.user) {
+    return <div>User not authenticated</div>;
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('users')
+    .select('subscription_tier')
+    .eq('id', user.user.id)
+    .single();
+
+  if (profileError) {
+    console.error('Error fetching profile:', profileError);
+    return <div>Error loading profile data</div>;
+  }
+
+  if (profile.subscription_tier !== 'enterprise') {
+    return (
+      <Container maxWidth="sm">
+        <Card elevation={3} sx={{ mt: 4, textAlign: 'center' }}>
+          <CardContent>
+            <Typography variant="h4" component="h1" gutterBottom>
+              Upgrade to Enterprise
+            </Typography>
+            <Typography variant="h6" color="text.secondary" gutterBottom>
+              Unlock Match Viewer and more!
+            </Typography>
+            <Typography paragraph>
+              The Match Viewer feature is exclusive to our Enterprise tier subscribers. Upgrade now to access advanced analytics, unlimited matches, and premium support.
+            </Typography>
+          </CardContent>
+          <CardActions sx={{ justifyContent: 'center', pb: 3 }}>
+            <Link href="/home/pricing" passHref>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<ArrowUpwardIcon />}
+              >
+                Upgrade to Enterprise
+              </Button>
+            </Link>
+          </CardActions>
+        </Card>
+      </Container>
+    );
+  }
+
+  // Fetch matches
   const { data: matches, error } = (await supabase
     .from('matches')
     .select('*')) as { data: Match[] | null; error: Error | null };
