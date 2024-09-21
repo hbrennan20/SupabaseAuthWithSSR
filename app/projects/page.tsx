@@ -22,9 +22,14 @@ export default async function ProjectsPage() {
     data: { user }
   } = await supabase.auth.getUser();
 
+  if (!user) {
+    return <Typography>Please log in to view your projects.</Typography>;
+  }
+
   const { data: projects, error } = (await supabase
     .from('projects')
-    .select('id, created_at, project_name, user_id')) as {
+    .select('id, created_at, project_name, user_id')
+    .eq('user_id', user.id)) as {
     data: Project[] | null;
     error: Error | null;
   };
@@ -48,19 +53,12 @@ export default async function ProjectsPage() {
           mb: 3
         }}
       >
-        <Typography variant="h4">Projects</Typography>
-        <Box>
-          <Link href="/projects/my-projects" passHref>
-            <Button variant="outlined" color="primary" sx={{ mr: 2 }}>
-              My Projects
-            </Button>
-          </Link>
-          <Link href="/projects/new" passHref>
-            <Button variant="contained" color="primary">
-              New Project
-            </Button>
-          </Link>
-        </Box>
+        <Typography variant="h4">My Projects</Typography>
+        <Link href="/projects/new" passHref>
+          <Button variant="contained" color="primary">
+            New Project
+          </Button>
+        </Link>
       </Box>
       <Grid container spacing={3}>
         {projects?.map((project: Project) => (

@@ -21,6 +21,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import BuildIcon from '@mui/icons-material/Build';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SignOutButton from './SignOut';
+import { styled as styledMaterial } from '@mui/material/styles';
 
 interface SideBarProps {
   session: boolean | null;
@@ -29,6 +30,26 @@ interface SideBarProps {
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
   color: theme.palette.text.primary
+}));
+
+const StyledBox = styled(Box)({
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+});
+
+const StyledSignOutButton = styled(SignOutButton)(({ theme }) => ({
+  '& .MuiButton-root': {
+    color: 'white',
+    borderColor: 'white',
+    '&:hover': {
+      borderColor: 'white',
+      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    },
+  },
+  '& .MuiButton-startIcon': {
+    color: 'white',
+  },
 }));
 
 const SideBar: FC<SideBarProps> = ({ session }) => {
@@ -48,15 +69,15 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
     { text: 'Match Viewer', icon: <BuildIcon />, path: '/match_viewer' }
   ];
   const drawerContent = (
-    <Box
-      sx={{ width: 250, bgcolor: '#3f51b5', color: 'white', height: '100%' }}
+    <StyledBox
+      sx={{ width: 250, bgcolor: '#3f51b5', color: 'white' }}
       role="presentation"
       onClick={toggleDrawer(false)}
     >
       <Typography variant="h6" sx={{ p: 2, textAlign: 'center' }}>
         Menu
       </Typography>
-      <List sx={{ pt: 2 }}>
+      <List sx={{ pt: 2, flexGrow: 1 }}>
         {session ? (
           <>
             {menuItems.map((item) => (
@@ -82,9 +103,6 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
                 <ListItemText primary="Profile" sx={{ color: 'white' }} />
               </ListItem>
             </StyledLink>
-            <ListItem sx={{ py: 1, color: 'white' }}>
-              <SignOutButton />
-            </ListItem>
           </>
         ) : (
           <StyledLink href="/auth">
@@ -94,26 +112,33 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
           </StyledLink>
         )}
       </List>
-    </Box>
+      {session && (
+        <Box sx={{ mt: 'auto', p: 2 }}>
+          <StyledSignOutButton />
+        </Box>
+      )}
+    </StyledBox>
   );
 
   return (
     <>
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={toggleDrawer(true)}
-        sx={{
-          position: 'fixed',
-          top: 16,
-          left: 16,
-          zIndex: 1300,
-          paddingTop: 3
-        }}
-      >
-        <MenuIcon />
-      </IconButton>
+      {!open && (
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={toggleDrawer(true)}
+          sx={{
+            position: 'fixed',
+            top: 60,
+            left: 24,
+            zIndex: 1300,
+            padding: '12px 8px 12px 8px', // Updated padding
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+      )}
       <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
         {drawerContent}
       </Drawer>
