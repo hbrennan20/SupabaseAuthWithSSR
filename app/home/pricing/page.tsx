@@ -6,5 +6,5 @@ export default function PricingPage() {
       <h1 className="text-3xl font-bold mb-8">Pricing Plans</h1>
       <Pricing />
     </div>
-  )
+  );
 }

@@ -24,7 +24,7 @@ export default async function RootLayout({
 }) {
   const session = await getSession(); // Get session
   const isSessionAvailable = session !== null;
-  
+
   return (
     <html lang="en">
       <ThemeRegistry>
@@ -39,7 +39,14 @@ export default async function RootLayout({
           >
             <Sidebar session={isSessionAvailable} />
             <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', height: '64px', padding: '0 16px' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  height: '64px',
+                  padding: '0 16px'
+                }}
+              >
                 <Typography
                   variant="h5"
                   sx={{
@@ -53,9 +60,7 @@ export default async function RootLayout({
                   Reporting Helper
                 </Typography>
               </Box>
-              <Box sx={{ flexGrow: 1, position: 'relative' }}>
-                {children}
-              </Box>
+              <Box sx={{ flexGrow: 1, position: 'relative' }}>{children}</Box>
             </Box>
           </body>
         </RootErrorBoundary>

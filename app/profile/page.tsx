@@ -1,5 +1,13 @@
 import { createServerSupabaseClient } from '@/lib/server/server';
-import { Typography, Box, Paper, Avatar, Grid, Divider, Button } from '@mui/material';
+import {
+  Typography,
+  Box,
+  Paper,
+  Avatar,
+  Grid,
+  Divider,
+  Button
+} from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import BadgeIcon from '@mui/icons-material/Badge';
@@ -38,10 +46,22 @@ async function ProfilePage() {
         </Box>
         <Divider sx={{ mb: 3 }} />
         <Grid container spacing={2}>
-          <ProfileItem icon={<AccountCircleIcon />} label="ID" value={userData.id} />
-          <ProfileItem icon={<EmailIcon />} label="Email" value={authUser.email} />
+          <ProfileItem
+            icon={<AccountCircleIcon />}
+            label="ID"
+            value={userData.id}
+          />
+          <ProfileItem
+            icon={<EmailIcon />}
+            label="Email"
+            value={authUser.email}
+          />
           {userData.username && (
-            <ProfileItem icon={<BadgeIcon />} label="Username" value={userData.username} />
+            <ProfileItem
+              icon={<BadgeIcon />}
+              label="Username"
+              value={userData.username}
+            />
           )}
           <ProfileItem
             icon={<WorkIcon />}
@@ -51,11 +71,7 @@ async function ProfilePage() {
         </Grid>
         <Divider sx={{ my: 3 }} />
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Button
-            variant="contained"
-            href="/home/pricing"
-            sx={{ mt: 2 }}
-          >
+          <Button variant="contained" href="/home/pricing" sx={{ mt: 2 }}>
             Upgrade Plan
           </Button>
         </Box>
@@ -64,7 +80,15 @@ async function ProfilePage() {
   );
 }
 
-function ProfileItem({ icon, label, value }: { icon: React.ReactNode; label: string; value?: string }) {
+function ProfileItem({
+  icon,
+  label,
+  value
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value?: string;
+}) {
   return (
     <Grid item xs={12}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>

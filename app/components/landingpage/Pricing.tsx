@@ -122,7 +122,14 @@ const PricingCard: React.FC<PricingPlan> = ({
 
 const Pricing: React.FC = () => {
   return (
-    <Box sx={{ width: '100%', pt: [1, 2, 3, 6], pb: [4, 6, 8, 12], px: [2, 3, 4, 5] }}>
+    <Box
+      sx={{
+        width: '100%',
+        pt: [1, 2, 3, 6],
+        pb: [4, 6, 8, 12],
+        px: [2, 3, 4, 5]
+      }}
+    >
       <Container maxWidth="xl">
         <Box sx={{ textAlign: 'center', mb: 10 }}>
           <Typography

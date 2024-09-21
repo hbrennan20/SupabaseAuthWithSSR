@@ -1,5 +1,13 @@
 import { createServerSupabaseClient } from '@/lib/server/server';
-import { Box, Typography, Paper, Grid, Chip, Divider, IconButton } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Paper,
+  Grid,
+  Chip,
+  Divider,
+  IconButton
+} from '@mui/material';
 import ProjectStageSelect from './ProjectStageSelect';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -53,7 +61,8 @@ export default async function ProjectPage({
             <Box display="flex" alignItems="center" mb={2}>
               <CalendarTodayIcon sx={{ mr: 1, color: 'text.secondary' }} />
               <Typography variant="body1">
-                Created: {new Date(project.created_at).toLocaleDateString('en-GB', {
+                Created:{' '}
+                {new Date(project.created_at).toLocaleDateString('en-GB', {
                   day: '2-digit',
                   month: '2-digit',
                   year: '2-digit'
@@ -64,13 +73,17 @@ export default async function ProjectPage({
           <Grid item xs={12} sm={6}>
             <Chip
               label={`Stage: ${project.project_stage}`}
-              color={project.project_stage === 'early' ? 'primary' : 'secondary'}
+              color={
+                project.project_stage === 'early' ? 'primary' : 'secondary'
+              }
               sx={{ fontWeight: 'bold' }}
             />
           </Grid>
           <Grid item xs={12}>
             <Box display="flex" alignItems="flex-start" mt={2}>
-              <DescriptionIcon sx={{ mr: 1, mt: 0.5, color: 'text.secondary' }} />
+              <DescriptionIcon
+                sx={{ mr: 1, mt: 0.5, color: 'text.secondary' }}
+              />
               <Typography variant="body1">
                 {project.project_description || 'No description available'}
               </Typography>

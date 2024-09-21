@@ -22,7 +22,14 @@ export default function TestingPage() {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 3 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        p: 3
+      }}
+    >
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', mb: 2 }}>
         <IconButton onClick={handleGoBack} aria-label="go back">
           <ArrowBackIcon />

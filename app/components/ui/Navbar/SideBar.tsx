@@ -35,7 +35,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 const StyledBox = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
-  height: '100%',
+  height: '100%'
 });
 
 const StyledSignOutButton = styled(SignOutButton)(({ theme }) => ({
@@ -44,12 +44,12 @@ const StyledSignOutButton = styled(SignOutButton)(({ theme }) => ({
     borderColor: 'white',
     '&:hover': {
       borderColor: 'white',
-      backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    },
+      backgroundColor: 'rgba(255, 255, 255, 0.08)'
+    }
   },
   '& .MuiButton-startIcon': {
-    color: 'white',
-  },
+    color: 'white'
+  }
 }));
 
 const SideBar: FC<SideBarProps> = ({ session }) => {
@@ -133,7 +133,7 @@ const SideBar: FC<SideBarProps> = ({ session }) => {
             top: 60,
             left: 24,
             zIndex: 1300,
-            padding: '12px 8px 12px 8px', // Updated padding
+            padding: '12px 8px 12px 8px' // Updated padding
           }}
         >
           <MenuIcon />
